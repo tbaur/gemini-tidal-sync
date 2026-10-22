@@ -11,10 +11,10 @@ config.json
 .env.*.local
 
 # User-specific configuration
-~/.config/playlist-builder/config.json
-~/.config/playlist-builder/last_search.json
-~/.config/playlist-builder/playlist-builder.log
-~/.config/playlist-builder/.venv/
+~/.config/gemini-tidal-sync/config.json
+~/.config/gemini-tidal-sync/last_query.json
+~/.config/gemini-tidal-sync/gemini-tidal-sync.log
+~/.config/gemini-tidal-sync/.venv/
 
 # Python
 __pycache__/

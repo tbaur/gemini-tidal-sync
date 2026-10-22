@@ -5,6 +5,12 @@ onward this file is maintained automatically by
 [release-please](https://github.com/googleapis/release-please) based on
 [Conventional Commits](https://www.conventionalcommits.org). See [RELEASING.md](RELEASING.md).
 
+## [2.0.0] - 2026-10-22
+
+### Breaking Changes
+
+- Command, config directory, log file, and Keychain service are `gemini-tidal-sync` (`~/.config/gemini-tidal-sync`, `com.gemini-tidal-sync`).
+
 ## [1.1.1](https://github.com/tbaur/playlist-builder/compare/v1.1.0...v1.1.1) (2026-07-12)
 
 

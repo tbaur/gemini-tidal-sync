@@ -17,7 +17,7 @@ Pytest configuration and shared fixtures.
 
 CRITICAL: This file ensures all tests run safely without touching:
 - Real macOS Keychain (API keys, Tidal sessions)
-- Real config directory (~/.config/playlist-builder)
+- Real config directory (~/.config/gemini-tidal-sync)
 """
 import json
 import os
@@ -106,10 +106,10 @@ def mock_keychain_operations():
 def isolate_config_directory(tmp_path, monkeypatch):
     """
     CRITICAL: Redirect all config directory access to a temp directory.
-    This prevents tests from reading/writing to ~/.config/playlist-builder.
+    This prevents tests from reading/writing to ~/.config/gemini-tidal-sync.
     """
     # Create isolated test config directory
-    test_config_dir = tmp_path / "playlist-builder-test"
+    test_config_dir = tmp_path / "gemini-tidal-sync-test"
     test_config_dir.mkdir(parents=True, exist_ok=True)
     
     # Override constants module paths
@@ -117,7 +117,7 @@ def isolate_config_directory(tmp_path, monkeypatch):
     test_venv_dir = str(test_config_dir / ".venv")
     test_config_file = str(test_config_dir / "config.json")
     test_cache_file = str(test_config_dir / "last_query.json")
-    test_log_file = str(test_config_dir / "playlist-builder.log")
+    test_log_file = str(test_config_dir / "gemini-tidal-sync.log")
     
     # Patch constants module
     monkeypatch.setattr('constants.BASE_DIR', test_base_dir)

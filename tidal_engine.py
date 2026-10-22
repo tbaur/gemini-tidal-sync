@@ -28,13 +28,13 @@ import tidalapi
 from constants import (
     BOLD, GREEN, YELLOW, CYAN, RED, BLUE, MAGENTA, RESET, DIM,
     MIN_MATCH_SCORE, HI_RES_QUALITY_WEIGHT, LOSSLESS_QUALITY_WEIGHT, DEFAULT_QUALITY_WEIGHT,
-    TrackResolutionStatus
+    TrackResolutionStatus, LOGGER_NAME
 )
 from utils import retry_with_backoff, set_config_permissions, handle_error_with_raise
 from spinner import Spinner
 from keychain_utils import store_tidal_session, get_tidal_session
 
-logger = logging.getLogger('playlist_builder.tidal')
+logger = logging.getLogger(f"{LOGGER_NAME}.tidal")
 
 class TidalProvider:
     """Provider for Tidal music service."""

@@ -307,7 +307,7 @@ class TestPrintHelp:
         output = captured.out
         
         # Check for simplified help sections
-        assert "playlist-builder" in output
+        assert "gemini-tidal-sync" in output
         assert "USAGE" in output
         assert "COMMANDS" in output
         assert "OPTIONS" in output

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Playlist Builder integrates with Tidal to:
+Gemini Tidal Sync integrates with Tidal to:
 - Search and resolve tracks with quality-aware matching
 - Create and manage playlists in your Tidal account
 - Prioritize Hi-Res and Lossless audio quality
@@ -19,7 +19,7 @@ Playlist Builder integrates with Tidal to:
 
 **macOS (Recommended)**
 ```
-Keychain Service: com.playlist-builder
+Keychain Service: com.gemini-tidal-sync
 Account: tidal:tidal_session
 ```
 
@@ -59,16 +59,16 @@ Tracks must score above 0.40 to be considered valid matches.
 
 ```bash
 # Discover and cache tracks
-playlist-builder query "Jazz classics"
+gemini-tidal-sync query "Jazz classics"
 
 # Interactive discovery
-playlist-builder chat
+gemini-tidal-sync chat
 
 # Publish to Tidal
-playlist-builder publish tidal --name "Jazz Classics"
+gemini-tidal-sync publish tidal --name "Jazz Classics"
 
 # Replace existing playlist
-playlist-builder publish tidal --name "Jazz Classics" --replace
+gemini-tidal-sync publish tidal --name "Jazz Classics" --replace
 ```
 
 ## Error Handling

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Shared constants and utilities for playlist-builder.
+Shared constants for gemini-tidal-sync.
 """
 import os
 import sys
@@ -22,14 +22,21 @@ from enum import Enum
 
 # --- VERSION ---
 # Bumped by release-please; do not edit by hand for routine releases.
-__version__ = "1.1.1"  # x-release-please-version
+__version__ = "2.0.0"  # x-release-please-version
+
+# --- IDENTITY ---
+# Command installed by install.sh. Config, logs, and the Keychain service use this slug.
+APP_SLUG = "gemini-tidal-sync"
+APP_TITLE = "Gemini Tidal Sync"
+LOGGER_NAME = "gemini_tidal_sync"
+KEYCHAIN_SERVICE = f"com.{APP_SLUG}"
 
 # --- PATHS ---
-BASE_DIR = os.path.expanduser("~/.config/playlist-builder")
+BASE_DIR = os.path.expanduser(f"~/.config/{APP_SLUG}")
 VENV_DIR = os.path.join(BASE_DIR, ".venv")
 CONFIG_FILE = os.path.join(BASE_DIR, "config.json")
 CACHE_FILE = os.path.join(BASE_DIR, "last_query.json")
-LOG_FILE = os.path.join(BASE_DIR, "playlist-builder.log")
+LOG_FILE = os.path.join(BASE_DIR, f"{APP_SLUG}.log")
 
 # --- ANSI COLOR CODES ---
 BOLD = "\033[1m"

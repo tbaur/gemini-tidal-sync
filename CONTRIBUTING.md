@@ -1,10 +1,10 @@
 # Contributing
 
-Thank you for your interest in contributing to Playlist Builder.
+Thank you for your interest in contributing to Gemini Tidal Sync.
 
 ## Reporting Issues
 
-1. Check [existing issues](https://github.com/tbaur/playlist-builder/issues) first
+1. Check [existing issues](https://github.com/tbaur/gemini-tidal-sync/issues) first
 2. Include: macOS version, Python version, steps to reproduce, expected vs actual behavior
 
 ## Pull Requests
@@ -44,8 +44,8 @@ Example: `feat: add /shuffle chat command`
 ## Development Setup
 
 ```bash
-git clone git@github.com:YOUR_USERNAME/playlist-builder.git
-cd playlist-builder
+git clone git@github.com:YOUR_USERNAME/gemini-tidal-sync.git
+cd gemini-tidal-sync
 ./install.sh
 pip install -r requirements-test.txt
 ```

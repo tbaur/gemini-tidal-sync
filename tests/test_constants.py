@@ -25,17 +25,29 @@ from constants import (
     GEMINI_MODEL, GEMINI_3_PRO, GEMINI_3_FLASH, GEMINI_3_PRO_IMAGE,
     GEMINI_2_FLASH, GEMINI_2_PRO, AVAILABLE_MODELS,
     GEMINI_TEMPERATURE, MAX_RETRIES, RETRY_DELAY_BASE, GEMINI_THINKING_LEVEL,
-    ConfigPaths
+    ConfigPaths, APP_SLUG, APP_TITLE, LOGGER_NAME, KEYCHAIN_SERVICE
 )
 
 
 class TestPaths:
     """Test path constants."""
     
+    def test_public_names(self):
+        """Test the command, logger, and Keychain service names."""
+        import keychain_utils
+
+        assert APP_SLUG == "gemini-tidal-sync"
+        assert APP_TITLE == "Gemini Tidal Sync"
+        assert LOGGER_NAME == "gemini_tidal_sync"
+        assert KEYCHAIN_SERVICE == "com.gemini-tidal-sync"
+        assert keychain_utils.KEYCHAIN_SERVICE == KEYCHAIN_SERVICE
+        assert BASE_DIR.endswith(f"/.config/{APP_SLUG}")
+        assert LOG_FILE.endswith(f"/{APP_SLUG}.log")
+
     def test_base_dir_is_expanded(self):
         """Test that BASE_DIR uses expanded user path."""
         assert BASE_DIR.startswith(os.path.expanduser("~"))
-        assert "playlist-builder" in BASE_DIR
+        assert APP_SLUG in BASE_DIR
     
     def test_venv_dir(self):
         """Test VENV_DIR is correct."""
@@ -51,7 +63,7 @@ class TestPaths:
     
     def test_log_file_path(self):
         """Test LOG_FILE path."""
-        assert LOG_FILE == os.path.join(BASE_DIR, "playlist-builder.log")
+        assert LOG_FILE == os.path.join(BASE_DIR, "gemini-tidal-sync.log")
     
     def test_config_paths_dataclass(self):
         """Test ConfigPaths dataclass."""

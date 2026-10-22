@@ -1,4 +1,4 @@
-# Runtime dependencies for playlist-builder
+# Runtime dependencies for gemini-tidal-sync
 # Python 3.12+ required
 
 google-genai>=0.2.0,<1.0.0

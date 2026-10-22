@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-# PLAYLIST-BUILDER v28.0 INSTALLER
+# GEMINI-TIDAL-SYNC INSTALLER
 # Target: macOS / Linux (Python 3.12+)
 # ==============================================================================
 
@@ -14,11 +14,12 @@ DIM='\033[2m'
 RESET='\033[0m'
 HR="${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 
-INSTALL_DIR="$HOME/.config/playlist-builder"
-BIN_DEST="$HOME/local/bin/playlist-builder"
+# Keep these in sync with APP_SLUG in constants.py.
+INSTALL_DIR="$HOME/.config/gemini-tidal-sync"
+BIN_DEST="$HOME/local/bin/gemini-tidal-sync"
 
 echo -e "${CYAN}${BOLD}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${RESET}"
-echo -e "${CYAN}${BOLD}┃           PLAYLIST-BUILDER PRODUCTION DEPLOYMENT             ┃${RESET}"
+echo -e "${CYAN}${BOLD}┃           GEMINI-TIDAL-SYNC PRODUCTION DEPLOYMENT             ┃${RESET}"
 echo -e "${CYAN}${BOLD}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${RESET}"
 
 # 1. Pre-flight Check
@@ -146,7 +147,7 @@ EOF
     if [ -z "$GEMINI_KEY" ]; then
         echo -e "${YELLOW}Warning: No API key provided. You can add it later with:${RESET}"
         if [ "$USE_KEYCHAIN" = true ]; then
-            echo -e "${CYAN}  playlist-builder keychain set GEMINI_API_KEY <key>${RESET}"
+            echo -e "${CYAN}  gemini-tidal-sync keychain set GEMINI_API_KEY <key>${RESET}"
         else
             echo -e "${CYAN}  Edit $CONFIG_FILE manually${RESET}"
         fi
@@ -190,7 +191,7 @@ PYEOF
         else
             echo -e "${RED}Error: Failed to save API key.${RESET}"
             if [ "$USE_KEYCHAIN" = true ]; then
-                echo -e "${DIM}You can add it later with: playlist-builder keychain set GEMINI_API_KEY <key>${RESET}"
+                echo -e "${DIM}You can add it later with: gemini-tidal-sync keychain set GEMINI_API_KEY <key>${RESET}"
             else
                 echo -e "${DIM}Please edit $CONFIG_FILE manually.${RESET}"
             fi
@@ -208,9 +209,9 @@ PYEOF
         echo -e "${CYAN}Setting up Tidal authentication...${RESET}"
         echo -e "${DIM}This will open your browser for OAuth login...${RESET}"
         echo -e "${DIM}Note: Authentication will complete after venv is created.${RESET}"
-        echo -e "${DIM}You can also authenticate later by running: playlist-builder query \"test\"${RESET}"
+        echo -e "${DIM}You can also authenticate later by running: gemini-tidal-sync query \"test\"${RESET}"
     else
-        echo -e "${DIM}You can authenticate later by running: playlist-builder query \"test\"${RESET}"
+        echo -e "${DIM}You can authenticate later by running: gemini-tidal-sync query \"test\"${RESET}"
     fi
     
     # Ensure permissions are secure even if file already existed
@@ -271,8 +272,8 @@ fi
 echo -e "\n${GREEN}${BOLD}✔ INSTALLATION COMPLETE${RESET}"
 echo -e "${HR}"
 echo -e "${BOLD}NEXT STEPS:${RESET}"
-echo -e "1. Run ${CYAN}playlist-builder chat${RESET} for interactive discovery, or"
-echo -e "   ${CYAN}playlist-builder query \"your query\"${RESET} for one-shot search."
+echo -e "1. Run ${CYAN}gemini-tidal-sync chat${RESET} for interactive discovery, or"
+echo -e "   ${CYAN}gemini-tidal-sync query \"your query\"${RESET} for one-shot search."
 
 # Check if API key is already configured (works on re-runs too)
 API_KEY_SET=false
@@ -281,7 +282,7 @@ API_KEY_SET=false
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Try to read from Keychain using security command
     # Account format is "default:GEMINI_API_KEY" (see keychain_utils.py)
-    if security find-generic-password -s "com.playlist-builder" -a "default:GEMINI_API_KEY" -w 2>/dev/null | grep -q .; then
+    if security find-generic-password -s "com.gemini-tidal-sync" -a "default:GEMINI_API_KEY" -w 2>/dev/null | grep -q .; then
         API_KEY_SET=true
     fi
 fi
@@ -297,7 +298,7 @@ fi
 # Show instructions only if key is not set
 if [ "$API_KEY_SET" = false ]; then
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        echo -e "2. Add your ${MAGENTA}Gemini API Key${RESET} with: ${CYAN}playlist-builder keychain set GEMINI_API_KEY${RESET}"
+        echo -e "2. Add your ${MAGENTA}Gemini API Key${RESET} with: ${CYAN}gemini-tidal-sync keychain set GEMINI_API_KEY${RESET}"
     else
         echo -e "2. Add your ${MAGENTA}Gemini API Key${RESET} to: $CONFIG_FILE"
     fi

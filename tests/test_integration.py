@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Integration tests for playlist-builder.
+Integration tests for gemini-tidal-sync.
 
 Note: All tests automatically use mocked keychain and isolated config directory
 via conftest.py fixtures (mock_keychain_operations, isolate_config_directory).

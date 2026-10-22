@@ -21,10 +21,9 @@ import subprocess
 import sys
 from typing import Optional, Dict, Any
 
-logger = logging.getLogger('playlist_builder.keychain')
+from constants import KEYCHAIN_SERVICE, LOGGER_NAME
 
-# Keychain service name
-KEYCHAIN_SERVICE = "com.playlist-builder"
+logger = logging.getLogger(f"{LOGGER_NAME}.keychain")
 
 def _run_security_command(args: list, input_data: Optional[str] = None) -> tuple[bool, str]:
     """

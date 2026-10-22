@@ -1,6 +1,6 @@
-# Playlist Builder
+# Gemini Tidal Sync
 
-[![Tests](https://github.com/tbaur/playlist-builder/actions/workflows/test.yml/badge.svg)](https://github.com/tbaur/playlist-builder/actions/workflows/test.yml)
+[![Tests](https://github.com/tbaur/gemini-tidal-sync/actions/workflows/test.yml/badge.svg)](https://github.com/tbaur/gemini-tidal-sync/actions/workflows/test.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
 [![macOS](https://img.shields.io/badge/macOS-14%2B-lightgrey.svg)](https://www.apple.com/macos/)
@@ -29,14 +29,14 @@ AI-powered music discovery that uses Google Gemini to transform natural language
 ./install.sh
 ```
 
-This creates an isolated environment in `~/.config/playlist-builder` with no system-wide changes.
+This creates an isolated environment in `~/.config/gemini-tidal-sync` with no system-wide changes.
 
 ### Complete Removal
 
 ```bash
-rm -rf ~/.config/playlist-builder
-rm ~/local/bin/playlist-builder
-# Optionally clear Keychain: playlist-builder reset (before removal)
+rm -rf ~/.config/gemini-tidal-sync
+rm ~/local/bin/gemini-tidal-sync
+# Optionally clear Keychain: gemini-tidal-sync reset (before removal)
 ```
 
 ## Usage
@@ -46,8 +46,8 @@ rm ~/local/bin/playlist-builder
 Start a conversational session for iterative discovery:
 
 ```bash
-playlist-builder chat
-playlist-builder chat --model 3-pro --limit 20
+gemini-tidal-sync chat
+gemini-tidal-sync chat --model 3-pro --limit 20
 ```
 
 Chat commands:
@@ -67,31 +67,31 @@ Chat commands:
 For one-shot discovery:
 
 ```bash
-playlist-builder query "Jazz classics from the 1960s"
-playlist-builder query "Ambient electronic for focus" --limit 20
+gemini-tidal-sync query "Jazz classics from the 1960s"
+gemini-tidal-sync query "Ambient electronic for focus" --limit 20
 ```
 
 ### Publish to Tidal
 
 ```bash
-playlist-builder publish tidal --name "My Playlist"
-playlist-builder publish tidal --name "My Playlist" --replace
+gemini-tidal-sync publish tidal --name "My Playlist"
+gemini-tidal-sync publish tidal --name "My Playlist" --replace
 ```
 
 ### Keychain Management
 
 ```bash
-playlist-builder keychain set GEMINI_API_KEY
-playlist-builder keychain list
-playlist-builder keychain delete GEMINI_API_KEY
+gemini-tidal-sync keychain set GEMINI_API_KEY
+gemini-tidal-sync keychain list
+gemini-tidal-sync keychain delete GEMINI_API_KEY
 ```
 
 ### Other Commands
 
 ```bash
-playlist-builder --help    # Show help
-playlist-builder reset     # Clear credentials and cache
-playlist-builder rebuild   # Reinstall virtual environment
+gemini-tidal-sync --help    # Show help
+gemini-tidal-sync reset     # Clear credentials and cache
+gemini-tidal-sync rebuild   # Reinstall virtual environment
 ```
 
 ## Models
@@ -123,7 +123,7 @@ bash run_tests.sh                         # Using test runner
 ## Project Structure
 
 ```
-playlist-builder/
+gemini-tidal-sync/
 ├── main.py              # CLI and orchestration
 ├── tidal_engine.py      # Tidal API integration
 ├── constants.py         # Configuration constants

@@ -1,6 +1,6 @@
 # Test Suite
 
-Comprehensive pytest test suite for playlist-builder.
+Comprehensive pytest test suite for gemini-tidal-sync.
 
 ## Running Tests
 

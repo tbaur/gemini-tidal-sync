@@ -1,10 +1,10 @@
 #!/bin/bash
-# Test runner script for playlist-builder
+# Test runner script for gemini-tidal-sync
 
 set -e
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  PLAYLIST-BUILDER TEST SUITE"
+echo "  GEMINI-TIDAL-SYNC TEST SUITE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 

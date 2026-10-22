@@ -38,7 +38,7 @@ class TestSetupLogging:
         """Test that setup_logging returns a logger."""
         logger = setup_logging()
         assert isinstance(logger, logging.Logger)
-        assert logger.name == 'playlist_builder'
+        assert logger.name == 'gemini_tidal_sync'
     
     def test_setup_logging_debug_level(self):
         """Test debug logging level."""

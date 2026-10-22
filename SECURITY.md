@@ -48,6 +48,6 @@ All secrets stored in macOS Keychain:
 
 ## Best Practices
 
-1. **Use Keychain** — Always store secrets via `playlist-builder keychain set`
+1. **Use Keychain** — Always store secrets via `gemini-tidal-sync keychain set`
 2. **Never commit config.json** — It's in `.gitignore` by default
-3. **Review logs** — No secrets appear in `playlist-builder.log`
+3. **Review logs** — No secrets appear in `gemini-tidal-sync.log`

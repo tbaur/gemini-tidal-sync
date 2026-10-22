@@ -14,7 +14,7 @@
 # limitations under the License.
 
 """
-Playlist Builder - AI-Powered Music Discovery
+Gemini Tidal Sync - AI-Powered Music Discovery
 =====================================================
 Target: macOS Native (Python 3.12+)
 """
@@ -43,7 +43,7 @@ from constants import (
     DEFAULT_LIMIT, CHAT_DEFAULT_LIMIT, MAX_WORKERS, HIGH_CONFIDENCE_SCORE,
     GEMINI_MODEL, AVAILABLE_MODELS, GEMINI_THINKING_LEVEL,
     TrackResolutionStatus, API_TIMEOUT_SECONDS,
-    MAX_CONFIG_SIZE_BYTES, MAX_JSON_SIZE_BYTES
+    MAX_CONFIG_SIZE_BYTES, MAX_JSON_SIZE_BYTES, APP_SLUG, APP_TITLE
 )
 from utils import (
     setup_logging, validate_config, retry_with_backoff, format_track_signal, print_track_row,
@@ -85,14 +85,14 @@ def print_help():
         return f"    {name:{opt_width}}{desc}"
     
     print(f"""
-{BOLD}playlist-builder{RESET} - AI-powered music discovery and playlist curation
+{BOLD}{APP_SLUG}{RESET} - AI-powered music discovery and playlist curation
 
 {BOLD}USAGE{RESET}
-    playlist-builder {BOLD}chat{RESET} [--model <model>] [--limit <n>] [--debug]
-    playlist-builder {BOLD}query{RESET} <query> [--model <model>] [--limit <n>] [--debug]
-    playlist-builder {BOLD}publish{RESET} tidal --name <name> [--replace]
-    playlist-builder {BOLD}keychain{RESET} <set|get|delete|list> [key] [value]
-    playlist-builder {BOLD}reset{RESET} | {BOLD}rebuild{RESET}
+    {APP_SLUG} {BOLD}chat{RESET} [--model <model>] [--limit <n>] [--debug]
+    {APP_SLUG} {BOLD}query{RESET} <query> [--model <model>] [--limit <n>] [--debug]
+    {APP_SLUG} {BOLD}publish{RESET} tidal --name <name> [--replace]
+    {APP_SLUG} {BOLD}keychain{RESET} <set|get|delete|list> [key] [value]
+    {APP_SLUG} {BOLD}reset{RESET} | {BOLD}rebuild{RESET}
 
 {BOLD}COMMANDS{RESET}
 {cmd("chat", "Interactive conversational discovery session")}
@@ -108,11 +108,11 @@ def print_help():
 {opt("--debug", "Enable debug logging")}
 
 {BOLD}EXAMPLES{RESET}
-    playlist-builder chat
-    playlist-builder chat --model 3-pro --limit 20
-    playlist-builder query "Jazz classics for late night"
-    playlist-builder publish tidal --name "My Playlist"
-    playlist-builder keychain set GEMINI_API_KEY
+    {APP_SLUG} chat
+    {APP_SLUG} chat --model 3-pro --limit 20
+    {APP_SLUG} query "Jazz classics for late night"
+    {APP_SLUG} publish tidal --name "My Playlist"
+    {APP_SLUG} keychain set GEMINI_API_KEY
 """)
 
 class MusicCurator:
@@ -559,7 +559,7 @@ class ChatSession:
     def run_interactive(self):
         """Run interactive chat loop."""
         print(f"\n{HR}")
-        print(f"{BOLD}PLAYLIST BUILDER CHAT{RESET}")
+        print(f"{BOLD}{APP_TITLE.upper()}{RESET}")
         print(f"{DIM}Conversational AI-powered music discovery{RESET}")
         print(f"{HR}")
         print(f"\n{CYAN}Model:{RESET} {self.model}")
@@ -941,7 +941,7 @@ def load_or_create_config() -> dict:
                     logger.warning("Gemini API key not found in Keychain or config")
                     print(f"\n{RED}Error: Gemini API key not found.{RESET}")
                     print(f"{CYAN}Add your API key with:{RESET}")
-                    print(f"  {BOLD}playlist-builder keychain set GEMINI_API_KEY{RESET}")
+                    print(f"  {BOLD}{APP_SLUG} keychain set GEMINI_API_KEY{RESET}")
                     print(f"\n{DIM}Get your API key from: https://makersuite.google.com/app/apikey{RESET}\n")
                     sys.exit(1)
             
@@ -984,7 +984,7 @@ def main():
         sys.exit(0)
     
     # Parse arguments
-    parser = argparse.ArgumentParser(add_help=False)
+    parser = argparse.ArgumentParser(add_help=False, prog=APP_SLUG)
     parser.add_argument("-d", "--debug", action="store_true", help="Enable debug logging")
     parser.add_argument(
         "-l", "--limit", 
@@ -1095,7 +1095,7 @@ def main():
         
         if not args.keychain_cmd:
             print(f"{RED}Error: Please specify a keychain command (set, get, delete, list).{RESET}")
-            print(f"{DIM}Usage: playlist-builder keychain <command>{RESET}")
+            print(f"{DIM}Usage: {APP_SLUG} keychain <command>{RESET}")
             sys.exit(1)
         
         if args.keychain_cmd == "set":

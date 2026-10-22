@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Metrics collection and reporting for playlist-builder operations.
+Metrics collection and reporting for gemini-tidal-sync operations.
 """
 import time
 from dataclasses import dataclass, field

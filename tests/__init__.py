@@ -13,6 +13,6 @@
 # limitations under the License.
 
 """
-Test suite for playlist-builder.
+Test suite for gemini-tidal-sync.
 """
 

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Utility functions for playlist-builder.
+Utility functions for gemini-tidal-sync.
 """
 import os
 import re
@@ -27,10 +27,10 @@ from collections import deque
 from datetime import datetime, timedelta
 
 from constants import (
-    MAX_RETRIES, RETRY_DELAY_BASE, BLUE, BOLD, RESET, MAGENTA, CYAN, GREEN, YELLOW, RED, DIM, 
-    HIGH_CONFIDENCE_SCORE, MAX_QUERY_LENGTH, API_TIMEOUT_SECONDS, 
+    MAX_RETRIES, RETRY_DELAY_BASE, BLUE, BOLD, RESET, MAGENTA, CYAN, GREEN, YELLOW, RED, DIM,
+    HIGH_CONFIDENCE_SCORE, MAX_QUERY_LENGTH, API_TIMEOUT_SECONDS,
     RATE_LIMIT_REQUESTS_PER_MINUTE, CONFIG_FILE_PERMISSIONS,
-    MAX_JSON_SIZE_BYTES, MAX_CONFIG_SIZE_BYTES
+    MAX_JSON_SIZE_BYTES, MAX_CONFIG_SIZE_BYTES, LOGGER_NAME
 )
 
 T = TypeVar('T')
@@ -38,7 +38,7 @@ T = TypeVar('T')
 def setup_logging(debug: bool = False) -> logging.Logger:
     """Configure and return logger."""
     import os
-    from constants import LOG_FILE, BASE_DIR
+    from constants import LOG_FILE, BASE_DIR, LOGGER_NAME
     
     os.makedirs(BASE_DIR, exist_ok=True)
     
@@ -47,7 +47,7 @@ def setup_logging(debug: bool = False) -> logging.Logger:
         '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
     
-    logger = logging.getLogger('playlist_builder')
+    logger = logging.getLogger(LOGGER_NAME)
     logger.setLevel(level)
     
     # Remove existing handlers to avoid duplicates
@@ -208,7 +208,7 @@ def set_config_permissions(file_path: str) -> None:
     try:
         os.chmod(file_path, CONFIG_FILE_PERMISSIONS)
     except (OSError, PermissionError) as e:
-        logging.getLogger('playlist_builder').warning(f"Failed to set config file permissions: {e}")
+        logging.getLogger(LOGGER_NAME).warning(f"Failed to set config file permissions: {e}")
 
 
 class RateLimiter:

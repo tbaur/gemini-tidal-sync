@@ -5,6 +5,13 @@ onward this file is maintained automatically by
 [release-please](https://github.com/googleapis/release-please) based on
 [Conventional Commits](https://www.conventionalcommits.org). See [RELEASING.md](RELEASING.md).
 
+## [2.0.1](https://github.com/tbaur/gemini-tidal-sync/compare/v2.0.0...v2.0.1) (2026-10-22)
+
+
+### Bug Fixes
+
+* **license:** restore canonical Apache 2.0 LICENSE text ([b68d744](https://github.com/tbaur/gemini-tidal-sync/commit/b68d7441b24177c4b47d864983b940f8e7427c8a))
+
 ## [2.0.0] - 2026-10-22
 
 ### Breaking Changes

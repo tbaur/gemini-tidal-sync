@@ -22,7 +22,7 @@ from enum import Enum
 
 # --- VERSION ---
 # Bumped by release-please; do not edit by hand for routine releases.
-__version__ = "2.0.0"  # x-release-please-version
+__version__ = "2.0.1"  # x-release-please-version
 
 # --- IDENTITY ---
 # Command installed by install.sh. Config, logs, and the Keychain service use this slug.

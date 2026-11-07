@@ -18,8 +18,7 @@ Thank you for your interest in contributing to Gemini Tidal Sync.
 
 ### Commit / PR titles
 
-Follow [Conventional Commits](https://www.conventionalcommits.org). PR titles
-drive automated releases via release-please, so use prefixes like:
+Follow [Conventional Commits](https://www.conventionalcommits.org). PR titles drive automated releases via release-please, so use prefixes like:
 
 - `feat:` — New feature
 - `fix:` — Bug fix
@@ -30,9 +29,7 @@ drive automated releases via release-please, so use prefixes like:
 
 Example: `feat: add /shuffle chat command`
 
-> `CHANGELOG.md` is generated automatically by release-please from your
-> Conventional Commit / PR titles — do not edit it by hand for routine
-> releases. See [RELEASING.md](RELEASING.md).
+> `CHANGELOG.md` is generated automatically by release-please from your Conventional Commit / PR titles — do not edit it by hand for routine releases. See [RELEASING.md](RELEASING.md).
 
 ### PR checklist
 
